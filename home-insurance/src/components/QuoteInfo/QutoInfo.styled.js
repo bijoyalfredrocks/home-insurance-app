@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const QutoInfoContainer = styled.div`
     margin-top: 40px;
-    @media screen and (max-width: 480px) {
-        margin-top: 0px;
+    @media screen and (max-width: 768px) {
+        margin-top: 0px!important;
     }
 `;
 

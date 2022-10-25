@@ -12,7 +12,6 @@ export const CoverOptionColumn = styled.div`
 `;
 
 export const CoverOptionCard = styled.div` 
-
   display: flex;
   flex-direction: column;  
   padding: 30px;
@@ -20,14 +19,10 @@ export const CoverOptionCard = styled.div`
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);  
   overflow: hidden;  
-  /* border-width: max(1px, 0.1em);
-  border-style: solid; 
-  border-color: lightgrey; */
   border: solid ${({ selected }) => (selected ? '2px' : '1px')} ${({ selected }) => (selected ? '#0275d8' : 'lightgrey')};
 `;
 
 export const CoverOptionCardContent = styled.div` 
-  
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -56,7 +51,6 @@ export const CoverOptionCardTitle = styled.div`
 display: flex;
 flex-wrap:wrap;
 flex:70%;
-//margin-right:auto;
 font-size: 35px;
 `
 export const CoverOptionCardPrice = styled.div`

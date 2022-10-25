@@ -5,14 +5,12 @@ export const PricingCard = styled.div`
   flex-direction: column;
   padding: 20px 80px;
   text-decoration: none;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25); 
   border-radius: 5px;
-  border-width: max(1px, 0.1em);
-  border-style: solid; 
-  border-color: lightgrey;
+  border: solid 1px lightgrey;
   @media screen and (max-width: 960px) {
     padding: 20px 30px;
-  }
+  }  
 `;
 
 export const PricingCardContent = styled.div`

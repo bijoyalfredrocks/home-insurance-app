@@ -6,8 +6,9 @@ const fetchData = async ({ queryKey }) => {
 };
 
 const useFetch = (type) => {
-  const {REACT_APP_API_URL} = process.env;  
-  let url = `${REACT_APP_API_URL}${type}`; 
+  let url ='';
+  const {REACT_APP_HOST_URL} = process.env; 
+  url = `${REACT_APP_HOST_URL}${type}`; 
   const {data, status } = useQuery(["fetchData", url], fetchData);
   return { data, status};
 };
