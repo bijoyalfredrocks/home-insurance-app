@@ -3,10 +3,9 @@ import { render, screen, renderHook } from '@testing-library/react';
 import { QuotePrice } from './QuotePrice';
 import React from "react";
 import AppProvider, { AppContext, useAppData } from '../../context/AppProvider';
-import { act } from 'react-dom/test-utils';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-let state = { addOns: [], togglePayment: false };
+let state = { addOns: []};
 const mockUseContxt = jest.fn().mockImplementation(() => ({ state, dispatch }));
 React.useContext = mockUseContxt;
 const dispatch = jest.fn();
@@ -49,8 +48,7 @@ describe('QuotePrice: When no qoute is selected', () => {
         renderQueryProvider();
         const wrapper = getWrapper(state);
         const { result } = renderHook(() => useAppData(), { wrapper });
-        expect(result.current.appState.addOns.length).toBe(0);
-        
+        expect(result.current.appState.addOns.length).toBe(0);        
     })
     it("monthly default price should be £21.64", async () => {
         const renderedResult = renderWithClient(<QuotePrice
@@ -69,16 +67,15 @@ describe('QuotePrice: When no qoute is selected', () => {
     })
 
 })
-let appState = { addOns: [{ id: 'Accidental Damage Cover', monthlyPrice: 8.42, annualPrice: 101 }], togglePayment: false };
+let appState = { addOns: [{ id: 'Accidental Damage Cover', monthlyPrice: 8.42, annualPrice: 101 }]};
 const mockUseContext = jest.fn().mockImplementation(() => ({ appState, dispatch }));
 React.useContext = mockUseContext;
 describe('QuotePrice: When new qoute is added ', () => {
-    it('When new quote is added', () => {
+    it('should return updated state and vales', () => {
         renderQueryProvider();
         const wrapper = getWrapper(appState);
         const { result:{current}} = renderHook(() => useAppData(), { wrapper });
         expect(current.appState.addOns.length).toBe(1);
-        expect(current.appState.togglePayment).toBe(false);
         expect(current.appState.addOns[0].id).toBeDefined();
         expect(current.appState.addOns[0].monthlyPrice).toBeDefined();
         expect(current.appState.addOns[0].annualPrice).toBeDefined();
@@ -91,7 +88,7 @@ describe('QuotePrice: When new qoute is added ', () => {
         expect(renderedResult.getByTestId("total-price").textContent).toBe("£30.06")
     })
 
-    it("total price should be 360.68 when payment type is Annual ", async () => {
+    it("total price should be 360.68 when payment type is annual ", async () => {
         const renderedResult = renderWithClient(<QuotePrice 
             baseMonthlyPrice={21.64} 
             baseAnnualPrice={259.68} 
